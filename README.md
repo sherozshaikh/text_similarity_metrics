@@ -81,7 +81,8 @@ TextScoring(
     output_folder='Example2',
     col_name_1='doc1_elements',
     col_name_2='doc2_elements',
-    metrics_list=['basic_jaccard_similarity','dice_coefficient','edit_distance',], # edit_distance is incorrect as will be ignored. correct name is editdistance
+    # edit_distance is incorrect as will be ignored. correct name is editdistance
+    metrics_list=['basic_jaccard_similarity','dice_coefficient','edit_distance',],
 ).main()
 ```
 

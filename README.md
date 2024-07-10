@@ -51,14 +51,14 @@ import pandas as pd
 from text_scoring import TextScoring
 
 # Example usage with DataFrame
-df = pd.read_csv('your_data.csv')
+df = pd.read_csv('test_df.csv')
 
 # Create an instance of TextScoring
 text_scorer = TextScoring(
     dataframe_object=df,
-    output_folder='Mapped_Attributes',
-    col_name_1='doc1_elements',
-    col_name_2='doc2_elements',
+    output_folder='Example1',
+    col_name_1='PROD_DESC',
+    col_name_2='KEYWORD',
     metrics_list=['all']
 )
 
@@ -76,15 +76,15 @@ import pandas as pd
 from text_scoring import TextScoring
 
 # Sample DataFrame
-df = pd.DataFrame({
+df = pd.DataFrame(data={
     'doc1_elements': ['apple', 'banana', 'cherry'],
-    'doc2_elements': ['apple', 'banana', 'date']
+    'doc2_elements': ['apples', 'bannnana', 'charries']
 })
 
 # Create TextScoring instance
 text_scorer = TextScoring(
     dataframe_object=df,
-    output_folder='Example1',
+    output_folder='Example2',
     col_name_1='doc1_elements',
     col_name_2='doc2_elements',
     metrics_list=['get_jaccard_similarity', 'get_editdistance']

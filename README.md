@@ -54,7 +54,7 @@ from text_scoring import TextScoring
 df = pd.read_csv('test_df.csv')
 
 # Create an instance of TextScoring and perform similarity scoring on the DataFrame
-text_scorer = TextScoring(
+TextScoring(
     dataframe_object=df,
     output_folder='Example1',
     col_name_1='PROD_DESC',
@@ -76,7 +76,7 @@ df = pd.DataFrame(data={
 })
 
 # Create TextScoring instance and compute similarity scores
-text_scorer = TextScoring(
+TextScoring(
     dataframe_object=df,
     output_folder='Example2',
     col_name_1='doc1_elements',

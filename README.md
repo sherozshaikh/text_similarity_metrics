@@ -72,7 +72,7 @@ from text_scoring import TextScoring
 # Sample DataFrame
 df = pd.DataFrame(data={
     'doc1_elements': ['apple', 'banana', 'cherry'],
-    'doc2_elements': ['apples', 'bannnana', 'charries']
+    'doc2_elements': ['apples', 'bannnana', 'charries'],
 })
 
 # Create TextScoring instance and compute similarity scores

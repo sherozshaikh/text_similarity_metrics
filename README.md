@@ -53,20 +53,14 @@ from text_scoring import TextScoring
 # Example usage with DataFrame
 df = pd.read_csv('test_df.csv')
 
-# Create an instance of TextScoring
+# Create an instance of TextScoring and perform similarity scoring on the DataFrame
 text_scorer = TextScoring(
     dataframe_object=df,
     output_folder='Example1',
     col_name_1='PROD_DESC',
     col_name_2='KEYWORD',
     metrics_list=['all']
-)
-
-# Perform similarity scoring on the DataFrame
-results_df = text_scorer.main()
-
-# Save results to CSV
-results_df.to_csv('similarity_scores.csv', index=False)
+).main()
 ```
 
 ---
@@ -81,20 +75,14 @@ df = pd.DataFrame(data={
     'doc2_elements': ['apples', 'bannnana', 'charries']
 })
 
-# Create TextScoring instance
+# Create TextScoring instance and compute similarity scores
 text_scorer = TextScoring(
     dataframe_object=df,
     output_folder='Example2',
     col_name_1='doc1_elements',
     col_name_2='doc2_elements',
     metrics_list=['get_jaccard_similarity', 'get_editdistance']
-)
-
-# Compute similarity scores
-results_df = text_scorer.main()
-
-# Save results to CSV
-results_df.to_csv('similarity_scores_example1.csv', index=False)
+).main()
 ```
 
 ---

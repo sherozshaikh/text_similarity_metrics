@@ -122,7 +122,7 @@ class TextScoring():
     self.col_name_2:str = col_name_2
 
     # Determine which scoring metrics to use based on metrics_list
-    self.scoring_metrics:dict = self.text_metrics if metrics_list=='all' else {'get_'+str(k):self.text_metrics['get_'+str(k)] for k in metrics_list if ('get_'+str(k) in self.text_metrics.keys())}
+    self.scoring_metrics:dict = self.text_metrics if 'all' in metrics_list else {'get_'+str(k):self.text_metrics['get_'+str(k)] for k in metrics_list if ('get_'+str(k) in self.text_metrics.keys())}
 
   def __repr__(self):
     """

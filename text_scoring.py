@@ -80,7 +80,6 @@ class TextScoring():
       - 'jaro_similarity': Jaro similarity.
       - 'jaro_winkler_similarity': Jaro-Winkler similarity.
       - 'jensen_shannon_divergence': Jensen-Shannon divergence.
-      - 'levenshtein_distance': Levenshtein distance.
       - 'levenshtein_similarity': Levenshtein similarity.
       - 'minhash_containment_distance': MinHash containment distance.
       - 'monge_elkan_similarity': Monge-Elkan similarity.
@@ -110,7 +109,6 @@ class TextScoring():
       'get_jaro_similarity':self.get_jaro_similarity,
       'get_jaro_winkler_similarity':self.get_jaro_winkler_similarity,
       'get_jensen_shannon_divergence':self.get_jensen_shannon_divergence,
-      'get_levenshtein_distance':self.get_levenshtein_distance,
       'get_levenshtein_similarity':self.get_levenshtein_similarity,
       'get_minhash_containment_distance':self.get_minhash_containment_distance,
       'get_monge_elkan_similarity':self.get_monge_elkan_similarity,

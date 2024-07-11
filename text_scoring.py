@@ -54,7 +54,7 @@ class TextScoring():
   A class for computing text similarity metrics between elements in a pandas DataFrame.
 
   """
-  def __init__(self,dataframe_object:pd.DataFrame,output_folder:str='Mapped_Attributes',col_name_1:str='doc1_elements',col_name_2:str='doc2_elements',metrics_list:list=['all']):
+  def __init__(self,dataframe_object:pd.DataFrame,output_folder:str='Mapped_Attributes',col_name_1:str='doc1_elements',col_name_2:str='doc2_elements',metrics_list:list=['all'],create_folder:bool=False,create_zip:bool=False,):
     """
     Initialize the TextScoring class.
 
@@ -87,6 +87,8 @@ class TextScoring():
       - 'normalized_compression_distance': Normalized compression distance.
       - 'overlap_coefficient': Overlap coefficient.
       - 'ratcliff_obershelp_similarity': Ratcliff-Obershelp similarity.
+    - create_folder (bool, optional), default = False: If True, create the output folder specified by 'output_folder'. Default is False.
+    - create_zip (bool, optional), default = False: If True, create a ZIP archive of the output folder contents. Default is False.
 
     Returns:
     - None
@@ -124,6 +126,9 @@ class TextScoring():
 
     # Determine which scoring metrics to use based on metrics_list
     self.scoring_metrics:dict = self.text_metrics if 'all' in metrics_list else {'get_'+str(k):self.text_metrics['get_'+str(k)] for k in metrics_list if ('get_'+str(k) in self.text_metrics.keys())}
+
+    self.create_folder:bool = create_folder
+    self.create_zip:bool = create_zip
 
   def __repr__(self):
     """
@@ -643,16 +648,24 @@ class TextScoring():
     """
     start_time:float = time.time()
 
-    self.create_final_folder()
-
     # single core processing
     # self.df1:pd.DataFrame = self.df1.apply(lambda x: self.get_all_similarity_scores(row1=x),axis=1)
 
     # using pandarallel for multiprocessing
     self.df1:pd.DataFrame = self.df1.parallel_apply(lambda x: self.get_all_similarity_scores(row1=x),axis=1)
 
-    self.df1.to_csv(path_or_buf=self.output_folder+'/Similarity_Scores.csv',index=False,mode='w',encoding='utf-8') # save in CSV file format
-    # self.create_final_zip()
+    # create folder
+    if self.create_folder:
+      self.create_final_folder()
+      # save in CSV file format
+      self.df1.to_csv(path_or_buf=self.output_folder+'/Similarity_Scores.csv',index=False,mode='w',encoding='utf-8')
+    else:
+      self.df1.to_csv(path_or_buf=self.output_folder+'_Similarity_Scores.csv',index=False,mode='w',encoding='utf-8')
+
+    # create zip
+    if self.create_zip:
+      self.create_final_zip()
+
     print(f"Elapsed time: {((time.time() - start_time) / 60):.2f} minutes")
     return None
 
@@ -698,7 +711,9 @@ if __name__ == "__main__":
       output_folder='Example2',
       col_name_1='doc1_elements',
       col_name_2='doc2_elements',
-      metrics_list=['fuzz_token_set_ratio', 'jaro_winkler_similarity']
+      metrics_list=['fuzz_token_set_ratio', 'jaro_winkler_similarity'],
+      create_folder=False,
+      create_zip=False,
   ).main()
 
   custom_ram_cleanup_func()

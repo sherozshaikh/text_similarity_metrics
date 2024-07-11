@@ -632,7 +632,6 @@ class TextScoring():
           'get_damerau_levenshtein_distance',
           'get_hamming_distance',
           'get_normalized_compression_distance',
-          'get_difflib_sequencematcher',
           'get_minhash_containment_distance',
       ]:
         row1[metric_name.replace('get_','low_score_')]=round(number=metric_func(sent_1=doc1_,sent_2=doc2_),ndigits=4)

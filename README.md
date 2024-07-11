@@ -59,7 +59,9 @@ TextScoring(
     output_folder='Example1',
     col_name_1='PROD_DESC',
     col_name_2='KEYWORD',
-    metrics_list=['all']
+    metrics_list=['all'],
+    create_folder=False,
+    create_zip=False,
 ).main()
 ```
 
@@ -83,6 +85,8 @@ TextScoring(
     col_name_2='doc2_elements',
     # edit_distance is incorrect and will be ignored. the correct name is editdistance
     metrics_list=['basic_jaccard_similarity','dice_coefficient','edit_distance',],
+    create_folder=False,
+    create_zip=False,
 ).main()
 ```
 

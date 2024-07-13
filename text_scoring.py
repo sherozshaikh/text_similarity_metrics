@@ -69,7 +69,7 @@ class TextScoring():
       - 'weighted_jaccard_similarity': Weighted Jaccard similarity coefficient.
       - 'damerau_levenshtein_distance': Damerau-Levenshtein distance.
       - 'dice_coefficient': Dice coefficient.
-      - 'sequencematcher': SequenceMatcher similarity.
+      - 'difflib_sequencematcher': SequenceMatcher similarity.
       - 'editdistance': Edit distance (Levenshtein distance).
       - 'fuzz_partial_ratio': Partial ratio using fuzzy matching.
       - 'fuzz_ratio': Ratio using fuzzy matching.

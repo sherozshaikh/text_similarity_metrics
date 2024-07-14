@@ -697,7 +697,7 @@ if __name__ == "__main__":
   import pandas as pd
 
   # Sample DataFrame
-  df = pd.DataFrame(data={
+  df:pd.DataFrame = pd.DataFrame(data={
       'doc1_elements': ['apple', 'banana', 'cherry'],
       'doc2_elements': ['apples', 'bannnana', 'charries'],
   })
